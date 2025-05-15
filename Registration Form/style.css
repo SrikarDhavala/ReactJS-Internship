@@ -1,0 +1,142 @@
+#heading {
+    text-align: center;
+    margin-top: 20px;
+    font-family: impact;
+    font-weight: normal;
+    font-size: 60px;
+    text-decoration: underline;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, #72d5e7, #1d6be1);
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+#outerBox {
+    height: 500px;
+    width: 1000px;
+    margin: auto;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    padding-left: 40px;
+    padding-top: 40px;
+    font-size: 40px;
+    font-family: 'Trebuchet MS';
+    font-weight: bolder;
+}
+
+#registrationForm {
+    padding: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS';
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid rgb(23, 94, 186);
+    margin-bottom: 20px;
+    height: 25px;
+    font-size: 15px;
+}
+
+#Button {
+    margin-top: 20px;
+    margin-left: 12px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+}
+
+#Button:hover {
+    background-color: #45a049;
+}
+
+#backButton {
+    margin-top: 20px;
+    margin-left: 1px;
+    padding: 15px 30px;
+    width: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+}
+
+#backButton:hover {
+    background-color: #45a049;
+}
+
+#submitButton {
+    margin-top: 20px;
+    margin-left: -210px;
+    padding: 15px 30px;
+    width: 120px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+}
+
+#submitButton:hover {
+    background-color: #45a049;
+}
+
+#drop-down {
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid rgb(23, 94, 186);
+    margin-bottom: 20px;
+    height: 44px;
+    font-size: 15px;
+}
