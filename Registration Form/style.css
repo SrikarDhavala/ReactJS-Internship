@@ -132,7 +132,16 @@ input {
     background-color: #45a049;
 }
 
-#drop-down {
+#sem {
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid rgb(23, 94, 186);
+    margin-bottom: 20px;
+    height: 44px;
+    font-size: 15px;
+}
+
+#course {
     padding: 8px;
     border-radius: 8px;
     border: 2px solid rgb(23, 94, 186);
