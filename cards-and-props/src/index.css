@@ -1,7 +1,12 @@
+body {
+  background: radial-gradient(circle at center, #1B2325, #2F3E46, #0E1317);
+}
+
 .card {
   border: 1px solid hsla(0, 0%, 80%, 0.2);
   border-radius: 10px;
   box-shadow: 5px 5px 10px hsla(0, 0%, 0%, 0.5);
+  background: radial-gradient(circle at 140px 75px, #2F3E46, #1B2325, #0E1317);
   padding: 20px;
   margin: 10px;
   text-align: center;
@@ -25,10 +30,10 @@
 .card .card-title {
   font-family: Arial, sans-serif;
   margin: 0;
-  color: hsl(0, 0%, 20%);
+  color: hsl(0, 0%, 90%);
 }
 
 .card .card-text {
   font-family: Arial, sans-serif;
-  color: hsl(0, 0%, 30%);
+  color: hsl(0, 0%, 75%);
 }
