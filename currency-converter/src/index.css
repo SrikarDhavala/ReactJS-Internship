@@ -10,7 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: url("background.png") #030728 no-repeat center;
+  background: url("bg.png") #060b20 no-repeat center;
 }
 
 #root {
@@ -130,6 +130,11 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s ease;
+}
+
+.converter-form .submit-button.loading {
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .converter-form .submit-button:hover {
