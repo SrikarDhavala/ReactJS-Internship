@@ -1,7 +1,14 @@
+import HeroSection from "../components/UI/HeroSection";
+import About from "./About";
 
 function Home() {
 
-    return <h1>Home Page</h1>
+    return(
+        <>
+            <HeroSection />
+            <About />
+        </>
+    );
 }
 
 export default Home
