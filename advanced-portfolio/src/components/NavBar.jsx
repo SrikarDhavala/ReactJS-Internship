@@ -32,7 +32,7 @@ function NavBar() {
     ];
 
     return(
-        <nav className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${isScrolled ? "bg-[#050414] bg-opacity-50 backdrop-blur-md shadow-md" : "bg-transparent"}`}>
+        <nav className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${isScrolled ? "bg-[#050414]/60 backdrop-filter backdrop-blur-lg shadow-md" : "bg-transparent"}`}>
             <div className="text-white py-5 flex justify-between items-center">
                 <div className="text-lg font-semibold cursor-pointer">
                     <span className="text-blue-500">&lt;</span>
@@ -74,7 +74,7 @@ function NavBar() {
 
             {/* Mobile menu items */}
             {isOpen && (
-                <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414] bg-[#050414]/60 backdrop-filter backdrop-blur-lg z-50 rounded-lg shadow-lg">
+                <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414]/60 backdrop-filter backdrop-blur-lg z-50 rounded-lg shadow-lg">
                     <ul className="flex flex-col items-center space-y-4 py-4 text-gray-300">
                         {menuItems.map((item) => (
                             <li key={item.id} className={`cursor-pointer hover:text-white ${activeSection === item.id ? "text-blue-500" : ""}`}>

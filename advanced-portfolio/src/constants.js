@@ -70,7 +70,7 @@ export const SkillsInfo = [
     },
     {
       id: 2,
-      img: vpsLogo,
+      img: "school_logo",
       school: "ABC School",
       date: "2018 - 2021",
       grade: "91.3%",
