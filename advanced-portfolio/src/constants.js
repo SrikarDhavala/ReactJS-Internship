@@ -49,13 +49,45 @@ export const SkillsInfo = [
   },
 ];
 
+  export const experiences = [
+    {
+      id: 0,
+      img: null,
+      role: "Intern",
+      company: "XYZ Company",
+      date: "May 2025 - Present",
+      desc: "Learnt about ReactJS and Tailwind CSS and made a lot of projects.",
+      skills: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React JS",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
+    },
+    {
+      id: 1,
+      img: null,
+      role: "Intern",
+      company: "ABC Company",
+      date: "May 2024 - July 2024",
+      desc: "desciprtion",
+      skills: [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+    },
+  ];
+
   export const education = [
     {
       id: 0,
       img: "college_logo",
       school: "XYZ College",
       date: "2023 - 2027",
-      grade: "",
+      grade: "8.31 SPI",
       desc: "I completed my B.Tech degree in Computer Science and Engineering from XYZ College",
       degree: "Bachelor of Technology - B.Tech (Computer Science & Engineering)",
     },
@@ -85,7 +117,7 @@ export const SkillsInfo = [
       title: "Harry Potter Mini-Game",
       description:
         "description",
-      image: "",
+      image: null,
       tags: ["HTML", "CSS", "JavaScript", "React JS", "API"],
       github: "",
       webapp: "",
@@ -95,7 +127,7 @@ export const SkillsInfo = [
       title: "Pokemon Cards",
       description:
         "deescription",
-      image: "",
+      image: null,
       tags: ["React JS", "HTML", "CSS", "JavaScript"],
       github: "",
       webapp: "",
@@ -105,7 +137,7 @@ export const SkillsInfo = [
       title: "World Atlas",
       description:
         "description",
-      image: "",
+      image: null,
       tags: ["React JS", "API", "HTML", "CSS", "JavaScript"],
       github: "",
       webapp: "",

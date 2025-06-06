@@ -4,7 +4,9 @@ import Tilt from 'react-parallax-tilt'
 function Skills() {
 
     return(
-        <section id='skills' className='py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[13vw] font-sans bg-(linear-gradient(38.73deg, rgba(204,0,187,0.15) 0%, rgba(201,13,184,0) 50%), linear-gradient(141.27deg, rgba(0,70,209,0) 50%, rgba(0,70,209,0) 100%)'>
+        <section id='skills' className='py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[13vw] font-sans clip-path-custom' style={{
+            background: 'linear-gradient(38.73deg, rgba(42,127,254,0.15) 0%, rgba(59,130,246,0) 50%), linear-gradient(141.27deg, rgba(74,222,128,0) 50%, rgba(74,222,128,0) 100%)',
+        }}>
             <div className='text-center mb-8'>
                 <h2 className='text-3xl sm:text-4xl font-bold text-white'>SKILLS</h2>
                 <div className='w-24 h-1 bg-blue-500 mx-auto mt-2'></div>
@@ -20,7 +22,7 @@ function Skills() {
                             {category.title}
                         </h3>
                         <Tilt key={category.title} tiltMaxAngleX={20} tiltMaxAngleY={20} perspective={1000} scale={1.05} transitionSpeed={1000} gyroscope={true}>
-                            <div className='grid grid-cols-2 sm:grid-cols-3 gap-3 w-full'>
+                            <div className='grid grid-cols-2 sm:grid-cols-2 gap-3 w-full'>
                                 {category.skills.map((skill) => (
                                     <div key={skill.name} className='flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center'>
                                         <img src={skill.logo} alt={`${skill.name} logo`} className='w-6 h-6 sm:w-8 sm:h-8' />

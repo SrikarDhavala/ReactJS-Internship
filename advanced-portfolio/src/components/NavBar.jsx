@@ -20,6 +20,11 @@ function NavBar() {
     const handleMenuItemClick = (sectionId) => {
         setActiveSection(sectionId);
         setIsOpen(false);
+
+        const sectionElement = document.getElementById(sectionId);
+        if (sectionElement) {
+            sectionElement.scrollIntoView({ behavior: "smooth" });
+        }
     }
 
     const menuItems = [
@@ -28,7 +33,6 @@ function NavBar() {
         {id: "experience", label: "Experience"},
         {id: "projects", label: "Projects"},
         {id: "education", label: "Education"},
-        {id: "contact", label: "Contact"},
     ];
 
     return(
