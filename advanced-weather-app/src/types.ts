@@ -3,7 +3,7 @@ export interface Coord {
     lon: number;
 }
 
-export interface Weather {
+export interface WeatherData {
     coord: Coord;
     name: string;
     main: {
@@ -21,7 +21,7 @@ export interface Weather {
     }[]
     wind: {
         speed: number;
-        degree: number;
+        deg: number;
     }
 
     sys: {
@@ -38,7 +38,7 @@ export interface Weather {
     }[]
 }
 
-export interface WeatherForecast {
+export interface ForecastData {
     list: {
         dt: number;
         main: {

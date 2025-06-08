@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { Thermometer } from "lucide-react"
 import type { TemperatureUnit } from "../types"
+import type React from "react";
 
 interface SettingProps {
     unit: TemperatureUnit;
