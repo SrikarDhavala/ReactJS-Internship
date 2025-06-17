@@ -1,5 +1,5 @@
-import { Icons } from "../assets/icons";
-import { Images } from "../assets/images";
+import { Icons } from "./assets/icons";
+import { Images } from "./assets/images";
 
 export const FEATURES_DATA = [
   {
