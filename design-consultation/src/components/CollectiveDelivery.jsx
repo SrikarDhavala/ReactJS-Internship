@@ -7,7 +7,7 @@ function CollectiveDelivery() {
         <section className="max-w-[1180px] mx-auto lg:py-[65px] py-10 text-white px-4">
             <div className="text-center ">
                 <p className="font-arial lg:text-xl md:text-lg mb-4">
-                    Behind Every Great 
+                    Behind Every Great Delivery
                 </p>
                 <h3 className="lg:text-3xl md:text-2xl text-xl font-arial font-semibold">The Collective Delivery Squad</h3>
             </div>
