@@ -1,8 +1,19 @@
 import listings from "../data/listings"
 import ListingCard from "../components/ListingCard";
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react";
 
 function Home() {
+
+    const [query, setQuery] = useState("");
+
+    const filteredListings = listings.filter((listing) => {
+        const q = query.toLowerCase();
+        return (
+            listing.title.toLowerCase().includes(q) ||
+            listing.location.toLowerCase().includes(q)
+        );
+    });
 
     return (
         <div className="max-w-7xl mx-auto">
@@ -24,21 +35,48 @@ function Home() {
                     <input
                         type="text"
                         placeholder="Search city, stay, or location..."
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
                         className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none"
                     />
                 </div>
             </motion.section>
 
-            {/* Listing Grid */}
+            {/* Filtered Listing Grid */}
             <motion.section
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
                 className="mt-10 px-4 md:px-0 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
             >
-                {listings.map((listing) => (
-                    <ListingCard key={listing.id} listing={listing} />
-                ))}
+                <AnimatePresence>
+                    {filteredListings.length > 0 ? (
+                        filteredListings.map((listing) => (
+                            <motion.div
+                                key={listing.id}
+                                layout
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.3 }}
+                                className="bg-white shadow-sm rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 transform transition duration-200 border border-gray-100"
+                            >
+                                <ListingCard listing={listing} />
+                            </motion.div>
+                        ))
+                    ) : (
+                        <motion.div
+                            key="no-results"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="col-span-full text-center text-gray-500 py-10"
+                        >
+                            No stays match your search 😔<br />
+                            Try a different city or reset your filters!
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </motion.section>
         </div>
     );

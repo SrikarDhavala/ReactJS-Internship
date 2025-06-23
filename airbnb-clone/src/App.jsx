@@ -6,9 +6,9 @@ import Footer from "./components/Footer"
 function App() {
   return(
     <Router>
-      <div className="font-sans bg-gray-50 text-gray-800">
+      <div className="font-sans bg-gray-50 text-gray-800 min-h-screen flex flex-col">
         <Navbar />
-        <main className="pt-20 px-4">
+        <main className="flex-1 pt-20 px-4">
           <AppRoutes />
         </main>
         <Footer />
