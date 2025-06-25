@@ -12,6 +12,7 @@ function Navbar() {
                 <div className="space-x-6 text-sm text-gray-700">
                     <Link to="/" className="hover:text-cyan-700">Home</Link>
                     <Link to="/about" className="hover:text-cyan-700">About</Link>
+                    <Link to="/membership" className="hover:text-cyan-700">Membership</Link>
                     {isLoggedIn ? (
                         <button onClick={logout} className="text-sm text-gray-700 hover:text-red-600 transition cursor-pointer">
                             Logout

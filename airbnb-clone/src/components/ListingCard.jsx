@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
 import { FaStar } from "react-icons/fa"
+import { useAuth } from "../context/AuthContext";
 
 function ListingCard({ listing }) {
+
+    const { isMember } = useAuth();
 
     return (
         <Link
@@ -23,8 +26,19 @@ function ListingCard({ listing }) {
                         <FaStar className="mr-1" /> {listing.rating}
                     </div>
                 </div>
-                <p className="mt-2 font-semibold text-gray-700">
-                    ₹{listing.price} <span className="text-sm text-gray-400">/night</span>
+                <p className="mt-2">
+                    {isMember ? (
+                        <>
+                            <p className="line-through text-gray-400 text-sm">₹{listing.price}</p>
+                            <p className="text-emerald-600 font-bold">
+                                ₹{(listing.price * 0.9).toFixed(0)} <span className="text-sm text-gray-400">/night</span>
+                            </p>
+                        </>
+                    ) : (
+                        <p className="font-semibold text-gray-700">
+                            ₹{listing.price} <span className="text-sm text-gray-400">/night</span>
+                        </p>
+                    )}
                 </p>
             </div>
         </Link>
