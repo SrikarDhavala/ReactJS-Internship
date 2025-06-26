@@ -6,6 +6,7 @@ import BookingSuccess from "../pages/BookingSuccess"
 import About from "../pages/About"
 import Login from "../pages/Login"
 import Membership from "../pages/Membership"
+import Contact from "../pages/Contact"
 
 const AppRoutes = () => {
     return(
@@ -16,6 +17,7 @@ const AppRoutes = () => {
             <Route path="/success" element={<BookingSuccess />} />
             <Route path="/about" element={<About />} />
             <Route path="/membership" element={<Membership />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
         </Routes>
     );
