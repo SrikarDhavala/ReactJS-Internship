@@ -6,6 +6,7 @@ import { useState } from "react";
 function Home() {
 
     const [query, setQuery] = useState("");
+    const [sortOrder, setSortOrder] = useState("");
 
     const filteredListings = listings.filter((listing) => {
         const q = query.toLowerCase();
@@ -13,6 +14,10 @@ function Home() {
             listing.title.toLowerCase().includes(q) ||
             listing.location.toLowerCase().includes(q)
         );
+    }).sort((a,b) => {
+        if (sortOrder === "asc") return a.price - b.price;
+        if (sortOrder === "desc") return b.price - a.price;
+        return 0;
     });
 
     return (
@@ -39,6 +44,17 @@ function Home() {
                         onChange={(e) => setQuery(e.target.value)}
                         className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none"
                     />
+                </div>
+                <div className="mt-4 flex justify-center">
+                    <select
+                        value={sortOrder}
+                        onChange={(e) => setSortOrder(e.target.value)}
+                        className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none text-sm"
+                    >
+                        <option value="">Sort by Price</option>
+                        <option value="asc">Price: Low to High</option>
+                        <option value="desc">Price: High to Low</option>
+                    </select>
                 </div>
             </motion.section>
 
