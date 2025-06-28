@@ -2,19 +2,26 @@ import listings from "../data/listings"
 import ListingCard from "../components/ListingCard";
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react";
+import { Range } from 'react-range'
 
 function Home() {
 
     const [query, setQuery] = useState("");
     const [sortOrder, setSortOrder] = useState("");
 
+    const PRICE_MIN = 0;
+    const PRICE_MAX = 10000;
+    const [priceRange, setPriceRange] = useState([PRICE_MIN, PRICE_MAX]);
+
     const filteredListings = listings.filter((listing) => {
         const q = query.toLowerCase();
         return (
-            listing.title.toLowerCase().includes(q) ||
-            listing.location.toLowerCase().includes(q)
+            (listing.title.toLowerCase().includes(q) ||
+                listing.location.toLowerCase().includes(q)) &&
+            listing.price >= priceRange[0] &&
+            listing.price <= priceRange[1]
         );
-    }).sort((a,b) => {
+    }).sort((a, b) => {
         if (sortOrder === "asc") return a.price - b.price;
         if (sortOrder === "desc") return b.price - a.price;
         return 0;
@@ -22,7 +29,6 @@ function Home() {
 
     return (
         <div className="max-w-7xl mx-auto">
-            {/* Hero / Search */}
             <motion.section
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -49,12 +55,50 @@ function Home() {
                     <select
                         value={sortOrder}
                         onChange={(e) => setSortOrder(e.target.value)}
-                        className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none text-sm"
+                        className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none text-sm cursor-pointer"
                     >
                         <option value="">Sort by Price</option>
                         <option value="asc">Price: Low to High</option>
                         <option value="desc">Price: High to Low</option>
                     </select>
+                </div>
+                <div className="mt-4 max-w-md mx-auto space-y-3 text-sm text-gray-700">
+                    <label className="block font-medium text-gray-600">
+                        Budget Range: ₹{priceRange[0]} - ₹{priceRange[1]}
+                    </label>
+
+                    <Range
+                        step={250}
+                        min={PRICE_MIN}
+                        max={PRICE_MAX}
+                        values={priceRange}
+                        onChange={(values) => setPriceRange(values)}
+                        renderTrack={({ props, children }) => (
+                            <div
+                                {...props}
+                                className="w-full h-2 bg-gray-200 rounded-full relative cursor-pointer"
+                                style={{ ...props.style }}
+                            >
+                                <div className="absolute h-full bg-cyan-500 rounded-full" style={{
+                                    marginLeft: `${(priceRange[0] / PRICE_MAX) * 100}%`,
+                                    width: `${((priceRange[1] - priceRange[0]) / PRICE_MAX) * 100}%`
+                                }} />
+                                {children}
+                            </div>
+                        )}
+                        renderThumb={({ props }) => (
+                            <div
+                                {...props}
+                                className="absolute w-5 h-5 bg-white border-2 border-cyan-500 rounded-full shadow-md flex items-center justify-center focus:outline-none"
+                            >
+                                <div className="w-2 h-2 bg-cyan-500 rounded-full" />
+                            </div>
+                        )}
+                    />
+
+                    <div className="text-center text-xs text-gray-500">
+                        Showing stays between <span className="font-semibold">₹{priceRange[0]}</span> and <span className="font-semibold">₹{priceRange[1]}</span>
+                    </div>
                 </div>
             </motion.section>
 
