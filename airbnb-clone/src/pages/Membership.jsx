@@ -1,7 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 
 function Membership() {
     const { isMember, setIsMember } = useAuth();
+    const navigate = useNavigate();
+    const [plan, setPlan] = useState(null);
+
+    const monthlyPrice = 299;
+    const yearlyPrice = 2999;
+
+    const handleConfirm = () => {
+        setIsMember(true);
+    };
 
     return (
         <div className="max-w-3xl mx-auto p-8 mt-24 text-gray-700">
@@ -36,14 +47,62 @@ function Membership() {
             </table>
 
             {!isMember ? (
-                <button
-                    onClick={() => setIsMember(true)}
-                    className="bg-emerald-500 text-white px-6 py-2 rounded hover:bg-emerald-600 transition cursor-pointer"
-                >
-                    Get Membership
-                </button>
+                <>
+                    <div className="mb-4">
+                        <h2 className="text-md font-semibold mb-2">Choose your plan:</h2>
+                        <div className="flex gap-4">
+                            <button
+                                onClick={() => setPlan("monthly")}
+                                className={`px-4 py-2 rounded cursor-pointer ${plan === "monthly"
+                                    ? "bg-cyan-600 text-white"
+                                    : "bg-gray-100"
+                                    }`}
+                            >
+                                Monthly ₹{monthlyPrice}
+                            </button>
+                            <button
+                                onClick={() => setPlan("yearly")}
+                                className={`px-4 py-2 rounded cursor-pointer ${plan === "yearly"
+                                    ? "bg-cyan-600 text-white"
+                                    : "bg-gray-100"
+                                    }`}
+                            >
+                                Yearly ₹{yearlyPrice}
+                            </button>
+                        </div>
+                    </div>
+
+                    {plan && (
+                        <div>
+                            <p className="text-sm mb-2">
+                                Selected Plan:{" "}
+                                <span className="font-semibold text-emerald-600">
+                                    {plan === "monthly"
+                                        ? `Monthly - ₹${monthlyPrice}`
+                                        : `Yearly - ₹${yearlyPrice}`}
+                                </span>
+                            </p>
+                            <button
+                                onClick={handleConfirm}
+                                className="bg-emerald-500 text-white px-6 py-2 rounded hover:bg-emerald-600 transition cursor-pointer"
+                            >
+                                Confirm Payment
+                            </button>
+                        </div>
+                    )}
+                </>
             ) : (
-                <p className="text-emerald-600 font-bold text-lg">You're now a WanderIn Plus member!</p>
+                <div className="text-center">
+                    <p className="text-emerald-600 font-bold text-lg mb-4">
+                        You're now a WanderIn Plus member! 🎉
+                    </p>
+                    <button
+                        onClick={() => navigate("/")}
+                        className="bg-cyan-600 text-white px-5 py-2 rounded hover:bg-cyan-700 transition cursor-pointer"
+                    >
+                        Return Home
+                    </button>
+                </div>
             )}
         </div>
     );
