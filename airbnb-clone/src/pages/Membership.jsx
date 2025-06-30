@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 
 function Membership() {
-    const { isMember, setIsMember } = useAuth();
+    const { isMember, setIsMember, isLoggedIn } = useAuth();
     const navigate = useNavigate();
     const [plan, setPlan] = useState(null);
 
@@ -11,6 +11,10 @@ function Membership() {
     const yearlyPrice = 2999;
 
     const handleConfirm = () => {
+        if (!isLoggedIn) {
+            alert("Please login to proceed");
+            return;
+        }
         setIsMember(true);
     };
 
