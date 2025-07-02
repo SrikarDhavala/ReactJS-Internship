@@ -36,6 +36,22 @@ function ListingDetail() {
                     Experience a beautiful getaway in {listing.location}. This listing includes all the comfort you need to relax and enjoy your trip across India. Hosted by professionals.
                 </p>
 
+                {listing.amenities && listing.amenities.length > 0 && (
+                    <section className="mt-8">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Amenities</h2>
+                        <ul className="flex flex-wrap gap-2">
+                            {listing.amenities.map((amenity, idx) => (
+                                <li
+                                    key={idx}
+                                    className="bg-cyan-50 text-cyan-800 px-3 py-1 text-sm rounded-full border border-cyan-200 shadow-sm hover:bg-cyan-100 transition"
+                                >
+                                    {amenity}
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )}
+
                 <div className="mt-6 flex justify-between items-center">
                     <div>
                         {isMember ? (
