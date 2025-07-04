@@ -52,6 +52,22 @@ function ListingDetail() {
                     </section>
                 )}
 
+                {listing.nearbyLocations && listing.nearbyLocations.length > 0 && (
+                    <section className="mt-8">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Nearby Tourist Spots</h2>
+                        <ul className="flex flex-wrap gap-2">
+                            {listing.nearbyLocations.map((spot, idx) => (
+                                <li
+                                    key={idx}
+                                    className="bg-emerald-50 text-emerald-700 px-3 py-1 text-sm rounded-full border border-emerald-200 shadow-sm hover:bg-emerald-100 transition"
+                                >
+                                    {spot.name} • {spot.distance}
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )}
+
                 <div className="mt-6 flex justify-between items-center">
                     <div>
                         {isMember ? (
