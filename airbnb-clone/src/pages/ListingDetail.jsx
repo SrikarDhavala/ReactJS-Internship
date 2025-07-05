@@ -33,7 +33,7 @@ function ListingDetail() {
                 </div>
 
                 <p className="mt4 text-gray-700">
-                    Experience a beautiful getaway in {listing.location}. This listing includes all the comfort you need to relax and enjoy your trip across India. Hosted by professionals.
+                    Experience a beautiful getaway in {listing.location}. This stay includes all the comfort you need to relax and enjoy your trip across India. Hosted by professionals.
                 </p>
 
                 {listing.amenities && listing.amenities.length > 0 && (

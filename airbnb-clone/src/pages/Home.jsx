@@ -29,12 +29,7 @@ function Home() {
 
     return (
         <div className="max-w-7xl mx-auto">
-            <motion.section
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center py-10"
-            >
+            <motion.section initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center py-10">
                 <h1 className="text-4xl md:text-5xl font-bold text-cyan-800 mb-2">
                     Explore Unique Stays Across India
                 </h1>
@@ -43,20 +38,10 @@ function Home() {
                 </p>
 
                 <div className="mt-6 max-w-md mx-auto">
-                    <input
-                        type="text"
-                        placeholder="Search city, stay, or location..."
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none"
-                    />
+                    <input type="text" placeholder="Search city, stay, or location..." value={query} onChange={(e) => setQuery(e.target.value)} className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none" />
                 </div>
                 <div className="mt-4 flex justify-center">
-                    <select
-                        value={sortOrder}
-                        onChange={(e) => setSortOrder(e.target.value)}
-                        className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none text-sm cursor-pointer"
-                    >
+                    <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)} className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-cyan-600 focus:outline-none text-sm cursor-pointer">
                         <option value="">Sort by Price</option>
                         <option value="asc">Price: Low to High</option>
                         <option value="desc">Price: High to Low</option>
@@ -86,14 +71,14 @@ function Home() {
                                 {children}
                             </div>
                         )}
-                        renderThumb={({ props }) => (
-                            <div
-                                {...props}
-                                className="absolute w-5 h-5 bg-white border-2 border-cyan-500 rounded-full shadow-md flex items-center justify-center focus:outline-none"
-                            >
-                                <div className="w-2 h-2 bg-cyan-500 rounded-full" />
-                            </div>
-                        )}
+                        renderThumb={({ props }) => {
+                            const { key, ...rest } = props;
+                            return (
+                                <div key={key} {...rest} className="absolute w-5 h-5 bg-white border-2 border-cyan-500 rounded-full shadow-md flex items-center justify-center focus:outline-none">
+                                    <div className="w-2 h-2 bg-cyan-500 rounded-full" />
+                                </div>
+                            );
+                        }}
                     />
 
                     <div className="text-center text-xs text-gray-500">
@@ -103,12 +88,7 @@ function Home() {
             </motion.section>
 
             {/* Filtered Listing Grid */}
-            <motion.section
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="mt-10 px-4 md:px-0 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-            >
+            <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mt-10 px-4 md:px-0 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 <AnimatePresence>
                     {filteredListings.length > 0 ? (
                         filteredListings.map((listing) => (

@@ -1,12 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom"
 import listings from "../data/listings"
 import { motion } from "framer-motion"
+import { useState } from "react";
 
 function Booking() {
 
     const { id } = useParams();
     const navigate = useNavigate();
     const listing = listings.find((l) => l.id === id);
+
+    const [adults, setAdults] = useState(1);
+    const [children, setChildren] = useState(0);
 
     if (!listing) {
         return (
@@ -22,52 +26,42 @@ function Booking() {
             <h1 className="text-2xl font-bold text-cyan-800 mb-2">Book Your Stay</h1>
             <p className="text-gray-600 mb-6">{listing.title} — {listing.location}</p>
 
-            <form
-                onSubmit={(e) => {
+            <form onSubmit={(e) => {
                     e.preventDefault();
-                    navigate("/success"); // redirects to success screen
+                    navigate("/success");
                 }}
                 className="space-y-4 bg-white p-6 rounded-lg shadow-md"
             >
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Your Name</label>
-                    <input
-                        type="text"
-                        required
-                        className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none"
-                    />
+                    <input type="text" required className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none" />
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Email Address</label>
-                    <input
-                        type="email"
-                        required
-                        className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none"
-                    />
+                    <input type="email" required className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none" />
                 </div>
-                <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1">
                         <label className="block text-sm font-medium text-gray-700">Check-In</label>
-                        <input
-                            type="date"
-                            required
-                            className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none"
-                        />
+                        <input type="date" required className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none" />
                     </div>
                     <div className="flex-1">
                         <label className="block text-sm font-medium text-gray-700">Check-Out</label>
-                        <input
-                            type="date"
-                            required
-                            className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none"
-                        />
+                        <input type="date" required className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none" />
+                    </div>
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                    <div className="flex-1">
+                        <label htmlFor="adults" className="block text-sm font-medium text-gray-700">No. of Adults</label>
+                        <input type="number" id="adults" min="1" value={adults} onChange={(e) => setAdults(Math.max(1, parseInt(e.target.value) || 1))} required className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none" />
+                    </div>
+                    <div className="flex-1">
+                        <label htmlFor="children" className="block text-sm font-medium text-gray-700">No. of Children</label>
+                        <input type="number" id="children" min="0" value={children} onChange={(e) => setChildren(Math.max(0, parseInt(e.target.value) || 0))} required className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-cyan-500 focus:outline-none" />
                     </div>
                 </div>
 
-                <button
-                    type="submit"
-                    className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2 px-4 rounded-md transition cursor-pointer"
-                >
+                <button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2 px-4 rounded-md transition cursor-pointer">
                     Confirm Booking
                 </button>
             </form>
